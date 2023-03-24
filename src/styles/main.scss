@@ -1,0 +1,63 @@
+$clock-size: 500px;
+$clock-hand-width: $clock-size / 60;
+
+
+.page {
+  &__content {
+    margin: 0;
+  }
+}
+
+.clock-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.stop-watch {
+  position: relative;
+  height: $clock-size;
+  width: $clock-size;
+  border: 20px solid #990011FF;
+  border-radius: 50%;
+  background-color: #FCF6F5FF;
+
+  &__center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: $clock-size / 20;
+    height: $clock-size / 20;
+    background-color: #990011FF;
+    border-radius: 50%;
+  }
+
+  &__hand {
+    position: absolute;
+    left: $clock-size / 2 - $clock-hand-width / 2;
+    bottom: 50%;
+    width: $clock-size / 60;
+    border-radius: 7px;
+    transform-origin: bottom;
+
+    &--second {
+      height: $clock-size / 2;
+      background-color:  #990011FF;
+      animation: clock-step linear 60s infinite;
+    }
+
+    &--minute {
+      height: $clock-size / 3;
+      background-color: #990011FF;
+      animation: clock-step linear 3600s infinite;
+    }
+  }
+}
+
+@keyframes clock-step {
+  100% {
+    transform: rotate(360deg);
+  }
+}
